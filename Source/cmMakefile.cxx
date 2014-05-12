@@ -367,6 +367,8 @@ bool cmMakefile::GetBacktrace(cmListFileBacktrace& backtrace) const
 void cmMakefile::PrintCommandTrace(const cmListFileFunction& lff) const
 {
   cmOStringStream msg;
+  msg << "(" << std::fixed << cmSystemTools::GetTime();
+  msg << ") (" << this->CallStack.size() << ") ";
   msg << lff.FilePath << "(" << lff.Line << "):  ";
   msg << lff.Name << "(";
   for(std::vector<cmListFileArgument>::const_iterator i =
